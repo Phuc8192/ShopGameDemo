@@ -1,0 +1,31 @@
+﻿@model IEnumerable<WebShopBanGame.Models.SANPHAM>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<div class="container">
+    <div class="row mt-5">
+        <div class="product-group">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-12 col-sm-12 col-12">
+                        <div class="card card-product mb-3">
+                            <a href="@Url.Action("Details", "SANPHAMs", new { id = @item.MaSP })">
+                                <img class="card-img-top" src="@item.Anh1" alt="Card image cap">
+                            </a>                            
+                            <div class="card-body">
+                                <h5 class="card-title">@item.TenSP</h5>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-details"><h6>@item.Gia VND</h6></a>
+                                <a class="btn btn-success" href="@Url.Action("ThemVaoGio", "Cart", new { MaSP = @item.MaSP })"><h6>Add to cart</h6></a>
+                            </div>
+                        </div>
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+</div>
+

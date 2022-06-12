@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30503.244
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebShopBanGame", "WebShopBanGame\WebShopBanGame.csproj", "{E6F995D5-DB23-4920-80D2-E51BE7991A28}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{E6F995D5-DB23-4920-80D2-E51BE7991A28}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E6F995D5-DB23-4920-80D2-E51BE7991A28}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E6F995D5-DB23-4920-80D2-E51BE7991A28}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E6F995D5-DB23-4920-80D2-E51BE7991A28}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {F7BBF46D-FD65-4309-9434-C82313A33A00}
+	EndGlobalSection
+EndGlobal

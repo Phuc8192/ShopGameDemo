@@ -1,0 +1,77 @@
+﻿@model List<WebShopBanGame.Models.CartItem>
+
+@{
+    ViewBag.Title = "Giỏ hàng của bạn";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<h2>@ViewBag.Title</h2>
+
+@if (Model == null || Model.Count == 0)
+{
+    <p class="text-info text-center">
+        Giỏ hàng của bạn rỗng!
+    </p>
+}
+else
+{
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="table-responsive">
+                <table class="table table-bordered">
+                    <tr>
+                        <th>Hình</th>
+                        <th>Tên sản phẩm</th>
+                        <th>Số lượng</th>
+                        <th>Đơn giá</th>
+                        <th>Thành tiền</th>
+                        <th></th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        <tr>
+                            <td class="text-center"><img src="@item.Anh" width="100" height="60" /> </td>
+                            <td><a target="_blank" href="@Url.Action("ChiTiet", "SanPham", new { id = item.TenSP })"> @item.TenSP </a> </td>
+                            <td>
+                                <form action="@Url.Action("SuaSoLuong", "Cart", new { MaSP = @item.MaSP, SLuongMoi = @item.SLuong })" method="get">
+                                    <input type="hidden" name="MaSP" value="@item.MaSP" />
+                                    <input type="number" min="1" step="1" name="SLuongMoi" value="@item.SLuong" />
+                                    <button type="submit" class="btn btn-primary btn-sm"> Cập nhật </button>
+                                </form>
+                            </td>
+                            <td> @item.Gia.ToString("#,##0").Replace(',', '.') VNĐ </td>
+                            <td> @item.ThanhTien.ToString("#,##0").Replace(',', '.') VNĐ </td>
+
+                            <td> <a href="@Url.Action("XoaKhoiGio", new { MaSP = item.MaSP })" onclick="return confirm('Bạn có chắc muốn xóa sản phẩm này?');" class="btn btn-danger btn-sm">Xóa</a> </td>
+                        </tr>
+                    }
+                    <tr>
+                        <td></td>
+                        <td class="text-right">Tổng số lượng:</td>
+                        <td> @Model.Sum(m => m.SLuong) </td>
+                        <td class="text-right">Tổng thành tiền:</td>
+                        <td>@Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ </td>
+                    </tr>                   
+                </table>
+                @*@{Html.RenderAction("_ThanhToanPartial","Cart");}*@
+                @*<table class="table">
+                    <tr>
+                        <td class="text-right">Tổng tiền phải trả:</td>
+                        <td> @Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ </td>
+                        <td class="text-right">Số dư hiện có:</td>
+                        <td> @Model.Sum(m => m.ThanhTien).ToString("#,##0").Replace(',', '.') VNĐ  </td>
+                    </tr>
+                </table>*@
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <tr>                                
+                <td><a class="btn btn-link"><i class="fa-solid fa-arrow-left-from-line"></i>Tiếp tục mua sắm </a></td>
+                <td><a class="btn btn-primary" href="@Url.Action("ThanhToan","Cart", new { MaKH = Session["MaKH"]})">Thanh toán</a></td>
+            </tr>
+        </div>
+    </div>
+}

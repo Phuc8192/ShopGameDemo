@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebShopBanGame.Models.HOADON>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    string Tthai = "";
+}
+
+<h2 style="padding: 30px 0px; text-align:center">Danh Sách Hóa Đơn Mua</h2>
+
+<div style="padding: 20px 0px">
+    <a href="@Url.Action("Index","QLKhachHangs")">Về Danh Sách</a>
+</div>
+
+<table class="table">
+    <tr>
+        <th>
+            Mã Hóa Đơn
+        </th>
+        <th>
+            Ngày Mua
+        </th>
+        <th>
+            Chi Tiết
+        </th>
+        <th>
+            Trạng Thái
+        </th>      
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MaHD)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NgayBan)
+            </td>
+            <td>
+                <a href="@Url.Action("XemCTHD","QLKhachHangs",new { id = item.MaHD})">Xem</a>
+            </td>
+            @if (item.TrangThai == true)
+            {
+                Tthai = "Đã duyệt";
+                <td class="btn btn-success">@Tthai</td>              
+            }
+            else
+            {
+                Tthai = "Chưa duyệt";
+                <td class="btn btn-danger">@Tthai</td>
+            }
+        </tr>
+    }
+
+</table>

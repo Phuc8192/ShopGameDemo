@@ -1,0 +1,103 @@
+﻿@model  List<WebShopBanGame.Models.SANPHAM>
+@{
+    ViewBag.Title = "Sản Phẩm";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+    var grid = new WebGrid(Model, canPage: true, defaultSort: "MaSP", rowsPerPage: 10);  
+}
+<style>  
+    .alternatingRowStyle {
+            background-color: #e3f2fd;
+        }
+    .grid-footer {
+        color: #000;
+        font: 20px;
+        text-align: center;
+        font-weight: bold;
+    }
+    .grid-footer a {
+        background-color: #ffffff;
+        color: #007bff;            
+        padding: 8px;                    
+    }
+    .grid-footer a:active, a:hover {
+        background-color: #ffffff;
+        color: #FFAD33;       
+    }        
+
+                
+</style>
+<h3 style="text-align: center; margin-top: 10px;">Danh Sách Sản Phẩm</h3>
+<p>
+    @Html.ActionLink("Thêm sản phẩm", "Create")
+</p>
+<div id="gridContent">   
+    @grid.GetHtml(
+        tableStyle: "table table-bordered table-hover",
+        footerStyle: "grid-footer",
+        fillEmptyRows: true,
+        mode: WebGridPagerModes.Numeric,
+        alternatingRowStyle: "alternatingRowStyle",
+        columns: new[]  // colums in grid
+        {
+            grid.Column("MaSP","Mã SP"), //the model fields to display
+            grid.Column("TenSP","Tên SP"  ),
+            grid.Column("Gia","Giá",format:@<text> @item.Gia.ToString("#,##0")</text>),
+            grid.Column("LOAISANPHAM.TenLSP","Tên Loại SP"),
+            grid.Column("NHACUNGCAP.TenNCC","Nhà Phát Triển"),
+            grid.Column(format: (item) => Html.ActionLink("Sửa", "Edit", "QLSanPhams",new { id = item.MaSP },"QLSanPhamsController")),
+            grid.Column(format: (item) => Html.ActionLink("Xem", "Details","QLSanPhams", new { id = item.MaSP },"QLSanPhamsController")),
+        }
+    )
+</div>
+@*<table class="table table-hover table-sm table-bordered">
+    <thead>
+        <tr style="background-color: #e3f2fd;">
+            <th>
+                Mã SP
+            </th>
+            <th>                
+                @Html.ActionLink("Tên SP", "Index", new {sapxep = ViewBag.SXTen})
+            </th>
+            <th>
+                Giá
+            </th>
+            <th>
+                Tên Loại SP
+            </th>
+            <th>
+                Nhà Phát Triển
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.MaSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.TenSP)
+                </td>
+                <td>                    
+                    @string.Format("{0:#,##0}", item.Gia)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.LOAISANPHAM.TenLSP)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NHACUNGCAP.TenNCC)
+                </td>
+                <td>
+                    @Html.ActionLink("Xem", "Details", new { id = item.MaSP }) |
+                    @Html.ActionLink("Sửa", "Edit", new { id = item.MaSP })
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="pagination"> 
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page, sapxep = ViewBag.SXTen }))
+</div>*@

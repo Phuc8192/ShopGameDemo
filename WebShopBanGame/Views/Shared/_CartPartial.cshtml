@@ -1,0 +1,13 @@
+﻿@model List<WebShopBanGame.Models.CartItem>
+
+<div id="Cart">
+    <a href="@Url.Action("Index","Cart")">
+        <ul>
+            <li><i class="fa-solid fa-cart-shopping"></i></li>
+            <li>Giỏ hàng</li>
+            <li style="background-color: white; width: auto; height: 30px; border-radius: 5px; font-size: 20px; color: black; margin-top: 10px;">
+                <span style="line-height: 30px; padding: 5px; font-weight: bold;">@Model.Sum(x => x.SLuong)</span>
+            </li>
+        </ul>
+    </a>
+</div>

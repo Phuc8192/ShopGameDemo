@@ -1,0 +1,76 @@
+﻿
+@{
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+<html>
+<head>
+    <link rel="stylesheet" href="~/Content/bootstrap/css/bootstrap.css">
+    <script src="~/Content/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/0fdbaedebb.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>   
+</head>
+<body>
+    <div style="text-align:center; padding: 40px 0px">
+        <h2>Tổng Quan</h2>
+    </div>
+    <div class="row">
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-primary text-white mb-4">
+                <div class="card-body"><h2>@ViewBag.hoadon</h2></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    @if (Session["TenDNNV"] != null)
+                    {
+                        <a class="small text-white stretched-link" href="@Url.Action("Index","QLHoaDons")"><h4>Hóa Đơn</h4></a>
+                    }
+                    else
+                    {
+                        <a class="small text-white stretched-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');"><h4>Hóa Đơn</h4></a>
+                    }
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-warning text-white mb-4">
+                <div class="card-body"><h2>@ViewBag.sanpham</h2></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    @if (Session["TenDNNV"] != null)
+                    {
+                        <a class="small text-white stretched-link" href="@Url.Action("Index","QLSanPhams")"><h4>Tựa Game</h4></a>
+                    }
+                    else
+                    {
+                        <a class="small text-white stretched-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');"><h4>Tựa Game</h4></a>
+                    }                    
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-success text-white mb-4">
+                <div class="card-body"><h2>@ViewBag.doanhthu.ToString("#,##0").Replace(',', '.') VND</h2></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    <a class="small text-white stretched-link" href="#"><h4>Doanh Thu</h4></a>
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-xl-3 col-md-6">
+            <div class="card bg-danger text-white mb-4">
+                <div class="card-body"><h2>@ViewBag.khachhang</h2></div>
+                <div class="card-footer d-flex align-items-center justify-content-between">
+                    @if (Session["TenDNNV"] != null)
+                    {
+                        <a class="small text-white stretched-link" href="@Url.Action("Index","QLKhachHangs")"><h4>Khách Hàng</h4></a>
+                    }
+                    else
+                    {
+                        <a class="small text-white stretched-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');"><h4>Khách Hàng</h4></a>
+                    }                  
+                    <div class="small text-white"><i class="fas fa-angle-right"></i></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

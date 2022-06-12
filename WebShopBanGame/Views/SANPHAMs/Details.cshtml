@@ -1,0 +1,105 @@
+﻿@model WebShopBanGame.Models.SANPHAM
+@*@model WebShopBanGame.Models.THELOAI*@
+@{
+    ViewBag.title = "Chi Tiết";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@Model.TenSP</title>
+    <link rel="stylesheet" href="bootstrap-4.3.1-dist/css/bootstrap.css">
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.6.0/dist/jquery.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://kit.fontawesome.com/0fdbaedebb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <div class="container" style="margin-top: 100px;">
+        <div class="row">
+            <div class="col">
+                <div id="showImg" class="carousel slide" data-ride="carousel">
+                    <ul class="carousel-indicators">
+                        <li data-target="#showImg" data-slide-to="0" class="active"></li>
+                        <li data-target="#showImg" data-slide-to="1"></li>
+                        <li data-target="#showImg" data-slide-to="2"></li>
+                        <li data-target="#showImg" data-slide-to="3"></li>
+                    </ul>
+
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="@Model.Anh1" alt="image" style="width: 100%;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="@Model.Anh2" alt="image" style="width: 100%;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="@Model.Anh3" alt="image" style="width: 100%;">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="@Model.Anh4" alt="image" style="width: 100%;">
+                        </div>
+                    </div>
+
+                    <a class="carousel-control-prev" href="#showImg" data-slide="prev">
+                        <span class="carousel-control-prev-icon"></span>
+                    </a>
+                    <a class="carousel-control-next" href="#showImg" data-slide="next">
+                        <span class="carousel-control-next-icon"></span>
+                    </a>
+                </div>
+            </div>
+            <div class="col">
+                <h4>@Model.TenSP</h4>
+                <p><i class="fa-solid fa-tag"></i> Thể loại: </p>
+                <p><i class="fa-solid fa-gamepad"></i> Nhà phát triển: @Model.NHACUNGCAP.TenNCC</p>
+                <p><i class="fa-solid fa-sack-dollar"></i><span style="font-size: 25px; font-weight: 500;"> @string.Format("{0:0,00} VND", Model.Gia)</span></p>
+                <div class="row">
+                    <div class="col" style="padding: 0px 10px;">
+                        <div class="btn btn-primary" style="text-align: center; width: 100%;"><i class="fa-solid fa-credit-card" style="color: white;"></i> Mua ngay</div>
+                    </div>
+                    <div class="col" style="padding: 0px 10px;">
+                        <div class="btn btn-light text-primary" style="text-align: center; width: 100%; border: 1px solid #ddd;"><i class="fa-solid fa-cart-plus"></i> Thêm vào giỏ</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="info">
+            <h5 class="title" style="margin-top: 20px;">Chi tiết sản phẩm</h5>
+            <hr>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col" style="padding: 0px 50px 50px 50px;">
+                    <h4 style="text-align: center;">Gameplay @Model.TieuDe</h4>
+                    <p style="text-align: justify; text-indent: 50px;">
+                        @Model.NoiDung
+                    </p>
+                </div>
+            </div>
+        </div>
+        @*<div class="info">
+            <h5 class="title" style="margin-top: 20px;">Cấu hình tối thiểu</h5>
+            <hr>
+            <div class="row" style="margin-top: 20px;">
+                <div class="col" style="padding: 0px 50px;">
+                    <p id="cauhinh">
+                        Requires a 64-bit processor and operating system <br>
+                        <b>OS:</b> Windows 10 （64-bit）<br>
+                        <b>Processor:</b> Intel® Core™ i3-4130 or Core™ i5-3470 or AMD FX™-6100 <br>
+                        <b>Memory:</b> 8 GB RAM <br>
+                        <b>Graphics:</b> NVIDIA® GeForce® GT 1030 (DDR4) or AMD Radeon™ RX 550 <br>
+                        <b>DirectX:</b> Version 12 <br>
+                        <b>Network:</b> Broadband Internet connection <br>
+                        <b>Storage:</b> 23 GB available space <br>
+                        <b>Additional Notes:</b> 1080p/30fps when graphics settings are set to "Low". System requirements subject to change during game development. <br>
+                    </p>
+                </div>
+            </div>
+        </div>*@
+    </div>
+</body>
+</html>
+

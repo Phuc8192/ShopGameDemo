@@ -1,0 +1,80 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ADMIN</title>
+    <link rel="stylesheet" href="~/Scripts/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Scripts/style_shop_game.css">
+    <script src="https://kit.fontawesome.com/0fdbaedebb.js" crossorigin="anonymous"></script>
+</head>
+<body>
+    <header>
+        <div id="TopBar">
+            @if (Session["TenDNNV"] != null)
+            {
+                <ul>
+                    <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                    <li><a id="IconSign" href="@Url.Action("UserInfo","User")">Xin chào @Session["TenDNNV"].ToString()</a></li>
+                    <li><a href="#">/</a></li>
+                    <li>@Html.ActionLink("Thoát", "Logoff", "HomeAdmin")</li>
+                </ul>
+            }
+            else
+            {
+                <ul>
+                    <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                    <li>@Html.ActionLink("Đăng nhập", "Login", "HomeAdmin")</li>
+                    @*<li><a href="#">/</a></li>
+                    <li>@Html.ActionLink("Đăng ký", "Register", "User")</li>*@
+                </ul>
+            }          
+        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+            <a class="navbar-brand" href="@Url.Action("Index","HomeAdmin")">SHOPGAME.VN</a>
+            @if (Session["TenDNNV"] != null)
+            {
+               <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        @Html.ActionLink("Sản Phẩm", "../QLSanPhams/Index", "", new { @class = "nav-link" })
+                    </li>
+                    <li class="nav-item active">
+                        @Html.ActionLink("Khách Hàng", "../QLKhachHangs/Index", "", new { @class = "nav-link" })
+                    </li>                  
+                    @if ((bool)Session["PQ"] == false)
+                    {
+                        <li class="nav-item active">
+                            @Html.ActionLink("Nhân Viên", "../QLNhanViens/Index", "", new { @class = "nav-link" })
+                        </li>
+                    }
+                    <li class="nav-item active">
+                        @Html.ActionLink("Hóa Đơn", "../QLHoaDons/Index", "", new { @class = "nav-link" })
+                    </li>
+                </ul>
+            }
+            else
+            {
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');">Sản Phẩm</a>
+                    </li>
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');">Khách Hàng</a>
+                    </li>                 
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#" onclick="return confirm('Bạn phải đăng nhập để xem!');">Hóa Đơn</a>
+                    </li>
+                </ul>
+            }
+
+        </nav>
+    </header>
+    <div style="margin: 0px 10px;">
+        @RenderBody()
+    </div>
+    <script src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+    <script src="~/Scripts/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <script src="~/Scripts/jquery-3.6.0.min.js"></script>
+</body>
+</html>

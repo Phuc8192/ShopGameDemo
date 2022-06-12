@@ -1,0 +1,38 @@
+﻿@using PagedList.Mvc;
+@model PagedList.IPagedList<WebShopBanGame.Models.SANPHAM>
+@*@model IEnumerable<WebShopBanGame.Models.SANPHAM>*@
+@{
+    ViewBag.Title = "ShopGame";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+<link rel="stylesheet" href="~/Content/PagedList.css"> 
+<div class="container">
+    <div class="row mt-5">
+        <div class="product-group">
+            <div class="row">
+                @foreach (var item in Model)
+                {
+                    <div class="col-md-3 col-sm-6 col-12">
+                        <div class="card card-product mb-3">
+                            <a href="@Url.Action("Details", "SANPHAMs", new { id = @item.MaSP })">
+                                <img class="card-img-top" src="@item.Anh1" alt="Card image cap">
+                            </a>                            
+                            <div class="card-body">
+                                <h5 class="card-title">@item.TenSP</h5>
+                            </div>
+                            <div class="btn-group">
+                                <a class="btn btn-details"><h6>@string.Format("{0:0,00} VND", item.Gia)</h6></a>
+                                <a class="btn btn-success" href="@Url.Action("ThemVaoGio", "Cart", new { MaSP = @item.MaSP })"><h6><i class="fa-solid fa-cart-plus"></i></h6></a>
+                            </div>
+                        </div>
+                    </div>
+                }                
+            </div>
+        </div>
+    </div>
+</div>
+<br />
+<div class="pagination">
+    @*Trang @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) / @Model.PageCount*@
+    @Html.PagedListPager(Model, page => Url.Action("Index", new { page }))
+</div>

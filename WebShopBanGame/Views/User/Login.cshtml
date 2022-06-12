@@ -1,0 +1,75 @@
+﻿@model WebShopBanGame.Models.LoginModel
+
+@{
+    Layout = null;
+    //Layout = "~/Views/Shared/_LayoutPage.cshtml";
+}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Đăng nhập</title>
+    <link href="~/Scripts/styles.css" rel="stylesheet" />
+    <link rel="stylesheet" href="~/Scripts/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="~/Scripts/style_shop_game.css">
+    
+</head>
+<body class="bg-light">
+    <div id="layoutAuthentication">
+        <div id="layoutAuthentication_content">
+            <main>
+                <div class="container">
+                    <div class="row justify-content-center">
+                        <div class="col-lg-5">
+                            <div class="card shadow-lg border-0 rounded-lg mt-5">
+                                @using (Html.BeginForm("Login", "User", FormMethod.Post))
+                                {
+                                    @Html.AntiForgeryToken()                                   
+                                    <div class="card-header"><h3 class="text-center font-weight-light my-4"><a href="@Url.Action("Index","Home")">SHOPGAME</a> / Đăng nhập</h3></div>
+                                    <div class="card-body">
+                                        <form>
+                                            <div class="form-floating mb-3">
+                                                
+                                                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                @Html.EditorFor(model => model.TenDN, new { htmlAttributes = new { @class = "form-control" } })
+                                                <label for="inputEmail">Tên đăng nhập</label>                                              
+                                                @Html.ValidationMessageFor(model => model.TenDN, "", new { @class = "text-danger" })
+                                            </div>
+                                            <div class="form-floating mb-3">
+                                                @Html.EditorFor(model => model.MK, new { htmlAttributes = new { @class = "form-control" } })
+                                                <label for="inputPassword">Mật khẩu</label>
+                                                @Html.ValidationMessageFor(model => model.MK, "", new { @class = "text-danger" })
+                                            </div>
+                                            @*<div class="form-check mb-3">
+                                                <input class="form-check-input" id="inputRememberPassword" type="checkbox" value="" />
+                                                <label class="form-check-label" for="inputRememberPassword">Nhớ mật khẩu</label>
+                                            </div>*@
+                                            @*<div class="d-flex align-items-center justify-content-between mt-4 mb-0">                                             
+                                                <input type="submit" value="Đăng nhập" class="btn btn-primary" />
+                                            </div>*@
+                                            <div class="mt-4 mb-0">
+                                                <div class="d-grid"><input type="submit" value="Đăng nhập" class="btn btn-primary" /></div>
+                                            </div>
+                                        </form>
+                                    </div>
+                                    <div class="card-footer text-center py-3">
+                                        <div class="small">@Html.ActionLink("Chưa có tài khoản? Đăng ký!", "Register", "User")</div>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>       
+    </div>
+    
+</body>
+</html>

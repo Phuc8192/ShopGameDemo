@@ -1,0 +1,55 @@
+﻿@model WebShopBanGame.Models.HOADON
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_LayoutPage.cshtml";
+    string Tthai = "";
+}
+
+@if (Model.TrangThai == false)
+{
+    <div style="padding:50px">
+        <h5 style="text-align:center; color:red">Hóa đơn đang được duyệt. Quý khách vui lòng đợi giây lát...</h5>
+    </div>
+}
+
+<div class="row">
+    <div class="col-sm-12">
+        <div class="table-responsive">
+            <table class="table table-bordered">
+                <tr>
+                    <th>Mã Hóa đơn</th>
+                    <th>Mã Khách hàng</th>
+                    <th>Ngày Bán</th>
+                    <th>Trạng thái</th>
+                    <th>CD-Key</th>                          
+                </tr>
+                <tr>
+                    <td>@Html.DisplayFor(m => m.MaHD)</td>
+                    <td>@Html.DisplayFor(m => m.MaKH)</td>
+                    <td>@Html.DisplayFor(m => m.NgayBan)</td>
+                    @if (Model.TrangThai == true)
+                    {
+                        Tthai = "Đã duyệt";
+                        <td class="btn btn-success">@Tthai</td>
+                        <td><a href="@Url.Action("Index","DSCDKEYs",new { id = Model.MaHD})">Xem</a></td>
+                    }
+                    else
+                    {
+                        Tthai = "Chưa duyệt";
+                        <td class="btn btn-danger">@Tthai</td>
+                    }
+                    
+                    @*<td>
+                        @{if (Model.TrangThai == true)
+                            { Tthai = "Đã duyệt"; }
+                            else
+                            { Tthai = "Chưa duyệt"; }
+                        }
+                        @Tthai
+                    </td>*@                                     
+                </tr>               
+            </table>           
+        </div>
+    </div>
+</div>

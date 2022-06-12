@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="ea7a5cef7c794e3c9d828bb2018f86df" Name="Diagram1" ZoomLevel="87">
+        <EntityTypeShape EntityType="SHOPGAMEModel.CHITIETHOADON" Width="1.5" PointX="5.25" PointY="6" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.DSCDKEY" Width="1.5" PointX="5.25" PointY="3.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.GIOHANG" Width="1.5" PointX="5.25" PointY="9.25" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.HOADON" Width="1.5" PointX="3" PointY="11" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.KHACHHANG" Width="1.5" PointX="0.75" PointY="10.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.LOAISANPHAM" Width="1.5" PointX="0.75" PointY="6.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.NHACUNGCAP" Width="1.5" PointX="0.75" PointY="3.375" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.NHANVIEN" Width="1.5" PointX="3" PointY="0.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.SANPHAM" Width="1.5" PointX="3" PointY="5.125" IsExpanded="true" />
+        <EntityTypeShape EntityType="SHOPGAMEModel.THELOAI" Width="1.5" PointX="5.25" PointY="15.25" IsExpanded="true" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__CHITIETHOA__MaHD__5AEE82B9" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__CHITIETHOA__MaNV__5CD6CB2B" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__CHITIETHOA__MaSP__5BE2A6F2" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__DSCDKEY__MaHD__571DF1D5" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__DSCDKEY__MaSP__5812160E" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__GIOHANG__MaKH__2D27B809" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__GIOHANG__MaSP__2E1BDC42" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__HOADON__MaKH__4F7CD00D" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__SANPHAM__MaLSP__1A14E395" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.FK__SANPHAM__MaNCC__1B0907CE" ManuallyRouted="false" />
+        <AssociationConnector Association="SHOPGAMEModel.CHITIETTHELOAI" ManuallyRouted="false" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

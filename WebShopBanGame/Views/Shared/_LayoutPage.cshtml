@@ -1,0 +1,113 @@
+﻿
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    @*@Styles.Render("~/Content/css")*@
+    <link rel="stylesheet" href="~/Scripts/bootstrap/css/bootstrap.css">    
+    <script src="https://kit.fontawesome.com/0fdbaedebb.js" crossorigin="anonymous"></script>
+    <title>@ViewBag.title</title>
+    <link rel="stylesheet" href="~/Scripts/style_shop_game.css">
+    <script type="text/javascript" src="~/Scripts/bootstrap/js/bootstrap.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>    
+    <script src="~/Scripts/bootstrap/js/bootstrap.min.js"></script>
+</head>
+<body>  
+    <header>
+        <div id="HeadBar">
+            <div id="TopBar">
+                @if (Session["TenDN"] != null)
+                {
+                    <ul>
+                        <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                        <li><a id="IconSign" href="@Url.Action("UserInfo","User")">Xin chào @Session["TenDN"].ToString()</a></li>
+                        <li><a href="#">/</a></li>
+                        <li>@Html.ActionLink("Thoát", "Logoff", "User")</li>
+                    </ul>                    
+                }
+                else
+                {
+                    <ul>
+                        <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                        <li>@Html.ActionLink("Đăng nhập", "Login", "User")</li>
+                        <li><a href="#">/</a></li>
+                        <li>@Html.ActionLink("Đăng ký", "Register", "User")</li>
+                    </ul>
+                }
+                @*@if (Request.IsAuthenticated)
+                {                  
+                    using (Html.BeginForm("LogOff", "User", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+                    {
+                        @Html.AntiForgeryToken()
+
+                        <ul class="nav navbar-nav navbar-right">
+                            <li>
+                                @Html.ActionLink("Hello", "LayTenDN", "User")
+                            </li>
+                            <li><a href="javascript:document.getElementById('logoutForm').submit()">Log off</a></li>
+                        </ul>
+                    }
+                }
+                else
+                {                   
+                    <ul>
+                        <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                        <li>@Html.ActionLink("Đăng nhập", "Login", "User")</li>
+                        <li><a href="#">/</a></li>
+                        <li>@Html.ActionLink("Đăng ký", "Register", "User")</li>
+                   </ul>
+                }*@
+                @*<ul>
+                    <li><a id="IconSign" href="#"><i class="fa-solid fa-circle-user"></i></a></li>
+                    <li>@Html.ActionLink("Đăng nhập", "Login", "User")</li>                   
+                    <li><a href="#">/</a></li>
+                    <li>@Html.ActionLink("Đăng ký", "Register", "User")</li>
+                </ul>*@
+            </div>
+            <div id="ToolBar">
+                <div class="row row-tool">
+                    <div class="left col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        <a href="@Url.Action("Index", "Home")">
+                            <ul>
+                                <li><img src="https://cdn.divineshop.vn/static/b1402e84a947ed36cebe9799e47f61c2.svg" alt="" style="width: 70px; margin-top: 42px; margin-left: 48px;"></li>
+                                <li style="color: white; font-size: 30px; font-weight: bold; margin-top: 50px; margin-left: 15px;">SHOPGAME.VN</li>
+                            </ul>
+                        </a>
+
+                    </div>
+                    <div class="main col-xs-6 col-sm-6 col-md-6 col-lg-6">
+                        @Html.Partial("_SearchPartial")
+                    </div>
+                    <div class="right col-xs-3 col-sm-3 col-md-3 col-lg-3">
+                        @{Html.RenderAction("_CartPartial","Cart");}
+                    </div>
+                </div>
+            </div>
+            <div id="NavTopBar" style="width: auto; height: 48px; box-shadow: 0px 1px 10px;"></div>
+        </div>
+    </header>
+    <div class="container body-content">
+        @RenderBody()
+    </div>
+    <div class="mini-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="copyright">
+                        <p>
+                            Copyrights © 2022. All rights reserved by
+                            <a href="@Url.Action("Index", "Home")">SHOPGAME</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    @*<footer class="footer-area">      
+        
+    </footer>*@
+</body>
+</html>
